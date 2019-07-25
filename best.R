@@ -6,24 +6,22 @@
 best <- function(state, outcome){
         dataRead <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
         
-        j <- 1
-        id <- 1:4706
-        cont <- c()
-        for(i in id){
-                if(dataRead$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack[i] == "Not Available"){
-                        cont[j] <- i
-                        j <- j + 1
-                }
-        }
-        
-        dataRead <- dataRead[-cont,]
-        
         if(!(state %in% dataRead$State)){
-                message("invalid state")
+                stop("invalid state")
         }
-        
         
         else if(outcome == "heart attack"){
+                j <- 1
+                id <- 1:4706
+                cont <- c()
+                for(i in id){
+                        if(dataRead$Lower.Mortality.Estimate...Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack[i] == "Not Available"){
+                                cont[j] <- i
+                                j <- j + 1
+                        }
+                }
+                
+                dataRead <- dataRead[-cont,]
                 low <- 999
                 for(i in 1:nrow(dataRead)) {
                         if(dataRead$State[i] == state){
@@ -38,6 +36,17 @@ best <- function(state, outcome){
         }
         
         else if(outcome == "heart failure"){
+                j <- 1
+                id <- 1:4706
+                cont <- c()
+                for(i in id){
+                        if(dataRead$Lower.Mortality.Estimate...Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure[i] == "Not Available"){
+                                cont[j] <- i
+                                j <- j + 1
+                        }
+                }
+                
+                dataRead <- dataRead[-cont,]
                 low <- 999
                 for(i in 1:nrow(dataRead)) {
                         if(dataRead$State[i] == state){
@@ -52,6 +61,18 @@ best <- function(state, outcome){
         }
         
         else if(outcome == "pneumonia"){
+                j <- 1
+                id <- 1:4706
+                cont <- c()
+                for(i in id){
+                        if(dataRead$Lower.Mortality.Estimate...Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia[i] == "Not Available"){
+                                cont[j] <- i
+                                j <- j + 1
+                        }
+                }
+                
+                dataRead <- dataRead[-cont,]
+                
                 low <- 999
                 for(i in 1:nrow(dataRead)) {
                         if(dataRead$State[i] == state){
@@ -66,7 +87,7 @@ best <- function(state, outcome){
         }
         
         else{
-                message(" invalid outcome")
+                stop(" invalid outcome")
         }
         hospname
 }
