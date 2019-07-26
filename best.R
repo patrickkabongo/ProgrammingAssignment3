@@ -6,6 +6,8 @@
 best <- function(state, outcome){
         dataRead <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
         
+        dataRead <- dataRead[complete.cases(dataRead), ] 
+        
         if(!(state %in% dataRead$State)){
                 stop("invalid state")
         }
