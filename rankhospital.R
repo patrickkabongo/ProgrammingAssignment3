@@ -16,7 +16,7 @@ rankhospital <- function(state, outcome, num = "best"){
                 id <- 1:4706
                 cont <- c()
                 for(i in id){
-                        if(dataRead$Lower.Mortality.Estimate...Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia[i] == "Not Available"){
+                        if(dataRead$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia[i] == "Not Available"){
                                 cont[j] <- i
                                 j <- j + 1
                         }
@@ -29,7 +29,7 @@ rankhospital <- function(state, outcome, num = "best"){
                 hp <- c()
                 for(i in 1:nrow(dataRead)) {
                         if(dataRead$State[i] == state){
-                                p[j] <- as.numeric(dataRead$Lower.Mortality.Estimate...Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia[i])
+                                p[j] <- as.numeric(dataRead$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia[i])
                                 hp[j] <- dataRead$Hospital.Name[i]
                                 j <- j + 1
                         }
@@ -62,7 +62,7 @@ rankhospital <- function(state, outcome, num = "best"){
                 id <- 1:4706
                 cont <- c()
                 for(i in id){
-                        if(dataRead$Lower.Mortality.Estimate...Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure[i] == "Not Available"){
+                        if(dataRead$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure[i] == "Not Available"){
                                 cont[j] <- i
                                 j <- j + 1
                         }
@@ -74,7 +74,7 @@ rankhospital <- function(state, outcome, num = "best"){
                 hp <- c()
                 for(i in 1:nrow(dataRead)) {
                         if(dataRead$State[i] == state){
-                                p[j] <- as.numeric(dataRead$Lower.Mortality.Estimate...Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure[i])
+                                p[j] <- as.numeric(dataRead$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure[i])
                                 hp[j] <- dataRead$Hospital.Name[i]
                                 j <- j + 1
                         }
@@ -107,7 +107,7 @@ rankhospital <- function(state, outcome, num = "best"){
                 id <- 1:4706
                 cont <- c()
                 for(i in id){
-                        if(dataRead$Lower.Mortality.Estimate...Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack[i] == "Not Available"){
+                        if(dataRead$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack[i] == "Not Available"){
                                 cont[j] <- i
                                 j <- j + 1
                         }
@@ -120,7 +120,7 @@ rankhospital <- function(state, outcome, num = "best"){
                 hp <- c()
                 for(i in 1:nrow(dataRead)) {
                         if(dataRead$State[i] == state){
-                                p[j] <- as.numeric(dataRead$Lower.Mortality.Estimate...Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack[i])
+                                p[j] <- as.numeric(dataRead$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack[i])
                                 hp[j] <- dataRead$Hospital.Name[i]
                                 j <- j + 1
                         }

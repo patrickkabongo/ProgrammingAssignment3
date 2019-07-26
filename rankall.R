@@ -58,6 +58,10 @@ rankall <- function(outcome, num = "best"){
                         df <- data.frame(matrix(unlist(new_data), nrow=length(new_data), byrow=T))
                 }
                 
+                else if(num > nrow(x)){
+                        return(NA)
+                }
+                
                 else{
                         new_data <- lapply(new_data, function(x) x[num,]) 
                         df <- data.frame(matrix(unlist(new_data), nrow=length(new_data), byrow=T))
@@ -122,6 +126,10 @@ rankall <- function(outcome, num = "best"){
                         df <- data.frame(matrix(unlist(new_data), nrow=length(new_data), byrow=T))
                 }
                 
+                else if(num > nrow(x)){
+                        return(NA)
+                }
+                
                 else{
                         new_data <- lapply(new_data, function(x) x[num,]) 
                         df <- data.frame(matrix(unlist(new_data), nrow=length(new_data), byrow=T))
@@ -184,6 +192,10 @@ rankall <- function(outcome, num = "best"){
                 else if(num == "worst"){
                         new_data <- lapply(new_data, function(x) tail(x, 1)) 
                         df <- data.frame(matrix(unlist(new_data), nrow=length(new_data), byrow=T))
+                }
+                
+                else if(num > nrow(x)){
+                        return(NA)
                 }
                 
                 else{
