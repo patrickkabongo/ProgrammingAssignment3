@@ -38,15 +38,15 @@ rankhospital <- function(state, outcome, num = "best"){
                 x <- cbind(hp, p)
                 colnames(x) <- c("Hospital.Name","Rate")
                 x <- as.data.frame(x)
-                #x$Rate <- as.numeric(as.character(x$Rate))
-                #x$Hospital.Name <- as.character(x$Hospital.Name)
+                x$Rate <- as.numeric(as.character(x$Rate))
+                x$Hospital.Name <- as.character(x$Hospital.Name)
                 x <- x[order(x[,2], x[,1]),]
                 
                 if(num == "best"){
-                        return(x$Hospital.Name[1])
+                        return(head(x$Hospital.Name,1))
                 }
                 else if(num == "worst"){
-                        return(x$Hospital.Name[nrow(x)])
+                        return(tail(x$Hospital.Name,1))
                 }
                 else if(num > nrow(x)){
                         return(NA)
@@ -54,6 +54,7 @@ rankhospital <- function(state, outcome, num = "best"){
                 else{
                         return(x$Hospital.Name[num])
                 }
+                
         }
         
         else if(outcome == "heart failure"){
